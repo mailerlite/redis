@@ -54,7 +54,9 @@ class Database {
 
 		foreach ($servers as $key => $server)
 		{
-			$clients[$key] = new Client($server);
+			$options = isset($server['options']) ? $server['options'] : [];
+
+			$clients[$key] = new Client($server, $options);
 		}
 
 		return $clients;
